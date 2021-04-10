@@ -1,28 +1,31 @@
 <template>
   <div class="home">
     <h1 style="text-align:center;">{{ msg }}</h1>
-    <el-row class="rowCls">
-      <el-col :span="6"><span>单位类型：</span></el-col>
-      <el-col :span="9">
+    <el-row>
+      <el-col class="rowCls" :span="8"><span>单位类型：</span></el-col>
+      <el-col :span="12">
         <el-select name="unittype" v-model="unittype" value-key="type" @change="unitTypeSelect" >
           <el-option v-for="item in unitlst" :key="item.type" :value="item" :label="item.name"></el-option>
         </el-select>
       </el-col>
     </el-row>
-    <el-row class="rowCls">
-      <el-col :span="6">单位名称：</el-col>
-      <el-col :span="9">
+    <el-row>
+      <el-col class="rowCls" :span="8">单位名称：</el-col>
+      <el-col :span="12">
         <el-select name="unitgroup" v-model="unitgroup" value-key="type" >
           <el-option v-for="item in unittype.groups" :key="item.type" :value="item" :label="item.name"></el-option>
         </el-select>
       </el-col>
-      <el-col :span="9">
+    </el-row>
+    <el-row>
+      <el-col :span="8">&nbsp;</el-col>
+      <el-col :span="12">
         <el-select name="unit" v-model="unit" value-key="id" >
           <el-option v-for="item in unitgroup.units" :key="item.id" :value="item" :label="item.name"></el-option>
         </el-select>
       </el-col>
     </el-row>
-    <div style="background-color: #cdcdcd; height:1px; width:100%; margin:5px 0"> </div>
+    <div style="background-color: #cdcdcd; height:1px; width:100%; margin:20px 0 0 0"> </div>
     <ul>
       <li class="questItem">
         <el-row class="quest">
@@ -98,9 +101,9 @@
         </el-row>
         <el-row class="remark">
           <el-checkbox-group v-model="form.checkList3" :disabled="form.isChecked3==0">
-            <el-checkbox label="a">a. 是否远离密集人群和必经通道</el-checkbox>
-            <el-checkbox label="b">b. 是否有明显的引导标识</el-checkbox>
-            <el-checkbox label="c">c. 是否有温馨提示</el-checkbox>
+            <el-checkbox class="answer" label="a">a. 是否远离密集人群和必经通道</el-checkbox>
+            <el-checkbox class="answer" label="b">b. 是否有明显的引导标识</el-checkbox>
+            <el-checkbox class="answer" label="c">c. 是否有温馨提示</el-checkbox>
           </el-checkbox-group>
         </el-row>
       </li>
@@ -228,27 +231,41 @@ ul {
   padding: 0;
 }
 li {
-  display: inline-block;
   margin: 8px 2px;
 }
 a {
   color: #42b983;
 }
 .home {
-  font-size: 1em;
+  font-size: 1.4em;
   text-align: left;
+}
+.el-select /deep/ .el-input__inner {
+  font-size:20px !important;
+}
+.el-select-dropdown__item  {
+  font-size:20px !important;
+}
+.el-radio /deep/ .el-radio__label{
+  font-size:20px !important;
+}
+.el-checkbox /deep/ .el-checkbox__label {
+  font-size:20px !important;
 }
 .rowCls {
   height: 40px;
   line-height: 40px;
 }
+.questItem {
+  margin-top: 15px;
+}
 .questItem .quest {
   font-weight: bolder;
 }
 .questItem .answer {
-  margin-left: 20px;
+  margin: 5px 0 0 20px;
 }
 .questItem .remark {
-  margin-left: 15px;
+  margin: 5px 0 0 15px;
 }
 </style>
